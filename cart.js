@@ -16,13 +16,13 @@ function renderData(list) {
          <td>${list.title}</td>
          <td>${list.category}</td>
          <td>${list.price}</td>
-         <td class="row" id="pid">
-         <button class="btn btn-secondary add-item buttons col-md-3 col-sm-1" onclick="addItem(${list.id})">+</button>
-         <span class="mx-2 col-md-3 col-sm-1 text-center" >${list.quantity}</span>
-         </textarea>
-         <button class="btn btn-secondary delete-button col-md-3 col-sm-1" onclick="deleteItem(${list.id})">-</button>
-    
-         </td>
+         <td class="row text-center" id="pid">
+         <div class="col-md-6 col-sm-12 d-flex align-items-center mx-auto">
+            <button class="btn btn-secondary add-item buttons">+</button>
+            <span class="mx-2 text-center">${list.quantity}</span>
+            <button class="btn btn-secondary delete-button">-</button>
+        </div>
+    </td>
          </tr>
         `
     });
