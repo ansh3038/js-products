@@ -7,46 +7,27 @@ async function getData(){
     // console.log(data);
     var size = document.getElementById("totalProducts");
     size.innerHTML = list.length + size.innerHTML;
-    
-createTable();
+    createTable();
 }
             
 getData();
 
-function toast(msg){
-    var a = document.getElementById("alert");
-    a.innerHTML = `<div class="alert alert-primary mt-3" role="alert">
-      ${msg}
-    </div>`
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    setTimeout(() => {
-      a.innerHTML="";
-    }, 3000);
-    
+var createTable = () => {
+    var tableHtml = `
+        <div class="row">
+            ${renderData(list)}
+        </div>
+    `;
+    a.innerHTML = tableHtml;
+
+    var addButtons = document.querySelectorAll(".add-button");
+    addButtons.forEach((button, index) => {
+        button.addEventListener("click", function(event) {
+            console.log(list[index]);
+            add(list[index]);
+        });
+    });
 }
-
-function add(item) {
-    console.log("add");
-
-    var itemList = JSON.parse(localStorage.getItem("list")) || [];
-
-    // Check if an item with the same pid is already in the list
-    var existingItemIndex = itemList.findIndex(existingItem => existingItem.id === item.id);
-    if (existingItemIndex !== -1) {
-       toast("Already added to cart. Check out the cart!");
-        // Item already exists in the list, you can update quantity or take any other action here
-        return;
-    }
-    toast("Added to cart.");
-
-    
-    itemList.push(item);
-    localStorage.setItem("list", JSON.stringify(itemList));
-}
-
 
 
 function renderData(copyList) {
@@ -75,23 +56,38 @@ function renderData(copyList) {
     return dataRow.join(''); // Join the array of strings to form a single HTML string
 }
 
-var createTable = () => {
-    var tableHtml = `
-        <div class="row">
-            ${renderData(list)}
-        </div>
-    `;
-    a.innerHTML = tableHtml;
+function add(item) {
+    console.log("add");
 
-    var addButtons = document.querySelectorAll(".add-button");
-    addButtons.forEach((button, index) => {
-        button.addEventListener("click", function(event) {
-            console.log(list[index]);
-            add(list[index]);
-        });
-    });
+    var itemList = JSON.parse(localStorage.getItem("list")) || [];
+
+    // Check if an item with the same pid is already in the list
+    var existingItemIndex = itemList.findIndex(existingItem => existingItem.id === item.id);
+    if (existingItemIndex !== -1) {
+       toast("Already added to cart. Check out the cart!");
+        // Item already exists in the list, you can update quantity or take any other action here
+        return;
+    }
+    toast("Added to cart.");
+
+    
+    itemList.push(item);
+    localStorage.setItem("list", JSON.stringify(itemList));
 }
 
+
+function toast(msg){
+    var a = document.getElementById("alert");
+    a.innerHTML = `<div class="alert alert-primary mt-3" role="alert">${msg}</div>`
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    setTimeout(() => {
+      a.innerHTML="";
+    }, 3000);
+    
+}
 
 //Sort functions
 function sortByCriterion(criteria) {
@@ -168,9 +164,3 @@ document.getElementById("sortPriceDesc").addEventListener("click", function () {
     a.innerHTML = tableHtml;
 });
 
-
-
-//Button Go To Cart
-document.getElementById("cart").onclick = function () {
-        window.location.href = "./cart.html";
-};

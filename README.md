@@ -7,7 +7,6 @@ A shopping website that fetches the data from an api source and then displays th
 - Adds the product to cart and if the product already exists in the cart then it shows the message already added.
 - Added a server file that uses http listener on port 3000
 - Using local storage to store the added product and then showing it in the cart.
-- 
 
 ## Getting Started
 

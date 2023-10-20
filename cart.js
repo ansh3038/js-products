@@ -4,9 +4,27 @@ console.log(objectList);
 var cost = document.getElementById("TotalCost");
 var totalcost = 0;
 
+//If cart is empty
 const setImage = ()=>{
-    document.getElementById("parent").innerHTML=`<div class="col-1 text-center ml-0"><img src="emptycart.jpg"  style="width:400px; height:300px"></div>`;
+    document.getElementById("parent").innerHTML=`<div class="col-4 text-center ml-0"><img src="emptycart.jpg"  style="width:600px; height:500px"></div>`;
 }
+
+var createTable = (list)=> {
+    if(list.length==0){
+        setImage();
+        return;
+    }
+    a.innerHTML = `
+    <table border="2px" class = "table table-striped">
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            ${renderData(list)}
+    </table>
+    `;
+}
+
 function renderData(list) {
     var dataRow =list.map( (list)=>{
         console.log(list);
@@ -16,13 +34,13 @@ function renderData(list) {
          <td>${list.title}</td>
          <td>${list.category}</td>
          <td>${list.price}</td>
-         <td class="row text-center" id="pid">
-         <div class="col-lg-6 col-md-11 col-sm-12 d-flex align-items-center mx-auto">
+         <td class="row mx-auto" id="pid">
+         <div class="col-lg-8 col-md-11 col-sm-12 d-flex align-items-center ">
             <button class="btn btn-secondary add-item buttons" onclick="addItem(${list.id})">+</button>
             <span class="mx-2 text-center quantity">${list.quantity}</span>
             <button class="btn btn-secondary delete-button" onclick="deleteItem(${list.id})">-</button>
         </div>
-    </td>
+        </td>
          </tr>
         `
     });
@@ -52,11 +70,9 @@ var addItem = (pid) => {
 }
 
 var deleteItem = (pid) => {
-    // Find the index of the product with the specified pid in objectList
     var index = objectList.findIndex((product) => product.id === pid);
 
     if (index !== -1) {
-        // Increment the quantity in objectList
         objectList[index].quantity -= 1;
         totalcost-=objectList[index].price;
         
@@ -66,18 +82,17 @@ var deleteItem = (pid) => {
             return;
         }
 
-        // Update the quantity in the HTML
         var row = document.getElementById(pid);
         var quantityElement = row.querySelector("span");
 
         if (quantityElement) {
-            // Convert the innerHTML to an integer, increment it, and update the HTML
             var currentQuantity = parseInt(quantityElement.innerHTML);
             quantityElement.innerHTML = (currentQuantity - 1).toString();
         }
         var newList = objectList;
         localStorage.setItem("list",JSON.stringify(newList));
-    } else {
+    } 
+    else {
         console.error("Product with pid " + pid + " not found in objectList");
     }
 }
@@ -92,30 +107,7 @@ var deleteRow = (id)=> {
         setImage();
     }
     localStorage.setItem("list",JSON.stringify(newList));
-    // createTable();
 }
 
-var sort = (number) => {
-    if(number === 1){
-        var list = objectList.sort((a,b)=> a.name - b.name );
-        createTable(list);
-    }
-}
-
-var createTable = (list)=> {
-    if(list.length==0){
-        setImage();
-        return;
-    }
-    a.innerHTML = `
-    <table border="2px" class = "table table-striped">
-            <th onclick="sort(1)">Name</th>
-            <th onclick="sort(2)">Category</th>
-            <th onclick="sort(3)">Price</th>
-            <th>Quantity</th>
-            ${renderData(list)}
-    </table>
-    `;
-}
-
+//Calling functions 
 createTable(objectList);

@@ -9,34 +9,41 @@
 
 </head>
 <body>
+
+    <!-- NAVBAR  -->
     <div class="container-fluid">
         <div class="row bg-primary">
             <nav class="navbar navbar-dark justify-content-between col-12">
-                <div class="col-5 col-sm-3 col-md-5"><a href="/" class="navbar-brand h3">Shoppers</a></div>
+                <div class="col-5 col-sm-3 col-md-5 mx-lg-auto"><a href="/" class="navbar-brand h3">Shoppers</a></div>
                 <div class="col-6 col-sm-2 col-md-6 ml-auto  ">
                     <div class="row justify-content-end ml-0 col-12">
-                        <div class="col-lg-3 col-md-6 col-6"><button class="btn btn-primary">Log In</button></div>
+                        <div class="col-lg-3 col-md-6 col-6 justify-content-end d-flex"><button class="btn btn-primary col-10">Log In</button></div>
                         <div class="col-lg-3 col-md-6 col-6"><button class="btn btn-light">Sign Up</button></div>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-    
-    <div class="row col-12 text-center mt-5" id="parent">
 
-    <div id="table" class="col-10 mx-auto mt-2 text-center"></div>
+    <!-- Table -->
+    <div class="row col-12 justify-content-center mt-5" id="parent">
+
+    <div id="table" class="col-10 mx-auto mt-2"></div>
 
     <div class="row col-12 mx-auto justify-content-center text-center" >
-        <span class="col-md-2 col-sm-6 h5">Total:  ₹</span>
+        <span class="col-md-2 col-sm-6 h5">Total: ₹</span>
         <span class="col-md-2 col-sm-6 h6" id="TotalCost"></span>
     </div>
+
+    <!-- Buttons  -->
     <div class="row col-8 mx-auto d-flex justify-content-center align-items-center">
-    <div class="col-md-3 col-sm-6 mt-2"><a href="https://www.billdesk.com/web/" class=""><button class="btn btn-primary">Proceed To Payment</button></a></div>
-    <div class="col-md-2 col-sm-5 mt-2"><a href="index.html" class=""><button class="btn btn-primary btn-block">Go Back</button></a></div>
-</div>
+    <div class="col-md-5 col-sm-6 mt-2 d-flex justify-content-center"><a href="https://www.billdesk.com/web/" class=""><button class="btn btn-primary">Proceed To Payment</button></a></div>
+    <div class="col-md-4 col-sm-5 mt-2 d-flex justify-content-center"><a href="index.html" class=""><button class="btn btn-primary btn-block">Go Back</button></a></div>
     </div>
+    </div>
+
     <script src = "cart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
+
 </body>
 </html>

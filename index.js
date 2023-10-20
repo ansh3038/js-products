@@ -62,6 +62,6 @@ function listener(req,res){
 }
 
 const httpServer = http.createServer(listener);
-httpServer.listen(3001,"",()=>{
-    console.log("Listening on port 3001");
+httpServer.listen(3000,"",()=>{
+    console.log("Listening on port 3000");
 })
