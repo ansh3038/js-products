@@ -5,7 +5,7 @@ var cost = document.getElementById("TotalCost");
 var totalcost = 0;
 
 const setImage = ()=>{
-    document.getElementById("parent").innerHTML=`<img src="emptycart.jpg" class='col-3' style="width:400px; height:300px">`;
+    document.getElementById("parent").innerHTML=`<div class="col-1 text-center ml-0"><img src="emptycart.jpg"  style="width:400px; height:300px"></div>`;
 }
 function renderData(list) {
     var dataRow =list.map( (list)=>{
@@ -17,10 +17,10 @@ function renderData(list) {
          <td>${list.category}</td>
          <td>${list.price}</td>
          <td class="row text-center" id="pid">
-         <div class="col-md-6 col-sm-12 d-flex align-items-center mx-auto">
-            <button class="btn btn-secondary add-item buttons">+</button>
-            <span class="mx-2 text-center">${list.quantity}</span>
-            <button class="btn btn-secondary delete-button">-</button>
+         <div class="col-lg-6 col-md-11 col-sm-12 d-flex align-items-center mx-auto">
+            <button class="btn btn-secondary add-item buttons" onclick="addItem(${list.id})">+</button>
+            <span class="mx-2 text-center quantity">${list.quantity}</span>
+            <button class="btn btn-secondary delete-button" onclick="deleteItem(${list.id})">-</button>
         </div>
     </td>
          </tr>
