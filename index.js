@@ -35,21 +35,21 @@ function listener(req,res){
             res.end(data);
         })
     }
-    else if(req.url.includes(".css")){
-        fs.readFile(`.${req.url}`,(err,data) =>{
-            if(data){
-                res.writeHead(201,{
-                    "Content-type" : 'text/css'
+    else if (req.url.includes(".css")) {
+        fs.readFile(`.${req.url}`, (err, data) => {
+            if (data) {
+                res.writeHead(201, {
+                    "Content-type": 'text/css'
                 })
+                res.end(data);
             }
-            res.end(data);
         })
     }
     else if(req.url.includes(".jpg")){
         fs.readFile(`.${req.url}`,(err,data) =>{
             if(data){
                 res.writeHead(201,{
-                    "Content-type" : 'text/jpg'
+                    "Content-type": 'text/jpg'
                 })
             }
             res.end(data);

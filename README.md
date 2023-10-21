@@ -1,5 +1,5 @@
 # Shoppers E-commerce Site
-A shopping website that fetches the data from an api source and then displays the products and has a second page to show the products added in the cart using bootstrap and javascript only.
+A shopping website that fetches the data from an api source and then displays the products and has a second page to show the products added in the cart using bootstrap as a css library.
 
 ## Features
 
